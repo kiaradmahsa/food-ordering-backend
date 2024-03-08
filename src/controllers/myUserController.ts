@@ -10,11 +10,15 @@ const createCurrentUser = async(req: Request , res:Response) =>{
         if( existingUser ){
             return res.status(200).send();
         }
-        //check the user if it doesn't exist
+
+        //create new user if it doesn't exist
         const newUser = new User(req.body);
         await newUser.save();
-        //return the user object the calling client
+
+        //return the user object to the calling client(frontend)
+        //201 means its created
         res.status(201).json(newUser.toObject());
+        
     }catch(error){
         res.status(500).json({message: "Error creating user"});
     }
