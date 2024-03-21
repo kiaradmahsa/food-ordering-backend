@@ -7,7 +7,16 @@ import { validateMyUserRequest } from "../middleware/validation";
 const router = express.Router();
 
 // /api/my/user
-router.post("/",jwtCheck, myUserController.createCurrentUser);
-router.put("/",jwtCheck, jwtParse ,validateMyUserRequest,myUserController.updateCurrentUser);
+router.get("/",jwtCheck, jwtParse, myUserController.getCurrentUser);
+router.post("/",jwtCheck, myUserController.createCurrentUser); //create user
+router.put(
+    "/",
+    jwtCheck,
+    jwtParse ,
+    validateMyUserRequest,
+    myUserController.updateCurrentUser); //update user
+
+
+
 
 export default router;
