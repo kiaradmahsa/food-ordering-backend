@@ -1,3 +1,4 @@
+//the restaurants that belong to the logged in user
 import express from "express";
 import multer from "multer";
 import MyRestaurantController from "../controllers/MyRestaurantController";
